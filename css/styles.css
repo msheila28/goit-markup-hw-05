@@ -22,6 +22,8 @@ ul {
   --ocean: #404bbf;
   --light-slate: #8e8f99;
   --green: #31d0aa;
+  --navy-blue-modal: rgba(46, 47, 66, 0.4);
+  --dairy: #fcfcfc;
 }
 
 body {
@@ -61,6 +63,28 @@ body {
 li > .link:hover,
 li > .link:focus {
   color: var(--ocean);
+}
+
+/* HW #5 */
+.active.link {
+  color: var(--ocean);
+  position: relative;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.address-list-item > .link {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 4px;
+  background-color: var(--ocean);
+  border-radius: 2px;
+  width: 100%;
 }
 
 .address-list-item > .address {
@@ -122,6 +146,9 @@ li > .link:focus {
   border: none;
   border-radius: 4px;
   height: 56px;
+
+  /* HW #5 */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .title-button:hover,
@@ -251,6 +278,9 @@ li > .link:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* HW #5 */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .socmed-link:hover,
@@ -289,6 +319,10 @@ li > .link:focus {
   align-items: center;
   justify-content: center;
   color: var(--light-slate);
+
+  /* HW #5 */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customer-link:hover {
@@ -366,6 +400,9 @@ li > .link:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* HW #5 */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-socmed-link:hover,
@@ -386,6 +423,12 @@ li > .link:focus {
   background-color: var(--cloud);
   font-family: inherit;
   font-size: inherit;
+
+  /* HW #5 */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-text:hover,
@@ -455,6 +498,9 @@ li > .link:focus {
 
 .project.link {
   display: block;
+
+  /* HW #5 */
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project.link:hover,
@@ -462,6 +508,98 @@ li > .link:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
+
+/* HW #5 */
+.project-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-img-desc {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--cloud);
+  padding: 40px 32px;
+  background-color: var(--iris);
+  height: 100%;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project.link:hover .project-img-desc,
+.project.link:focus .project-img-desc {
+  transform: translateY(0%);
+}
+
+/* Modal */
+.order-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--navy-blue-modal);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 408px;
+  min-height: 584px;
+  background: var(--dairy);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-button-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cornflower);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-button-close:hover,
+.modal-button-close:focus {
+  background-color: var(--ocean);
+  border: none;
+}
+
+.modal-button-close-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-button-close:hover,
+.modal-button-close:focus {
+  fill: var(--white);
+}
+
 /* Homepage */
 .image {
   display: block;
