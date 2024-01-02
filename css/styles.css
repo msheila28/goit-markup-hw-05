@@ -80,7 +80,7 @@ li > .link:focus {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: -1px;
   height: 4px;
   background-color: var(--ocean);
   border-radius: 2px;
